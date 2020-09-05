@@ -27,6 +27,7 @@ def get_lesson_name_list(file_path):
         item_dict = json.loads(item)
         
         lesson_dict = {}
+        lesson_dict['index'] = item_dict['index']
         lesson_dict['name'] = item_dict['name']
         
         videoUrl = item_dict['videoUrl']
@@ -37,20 +38,17 @@ def get_lesson_name_list(file_path):
         lesson_list_dict.append(lesson_dict)
     return lesson_list_dict
     
-def rename_video_file(file_dir_path, save_file_dir_path, files_list, lesson_list_dict):
-    for i in range(len(files_list)):
-        item_i = files_list[i]
-        old_Path = file_dir_path+'/'+item_i
-        #print(old_Path)
+def rename_video_file(file_dir_path, save_file_dir_path, lesson_list_dict):
+    for item in lesson_list_dict:
+        item_index = item['index']
+        item_name = item['name']
+        item_ideoUrl = item['videoUrl']
         
-        for j in range(len(lesson_list_dict)):
-            item_j = lesson_list_dict[j]
-            item_j_name = item_j['name']
-            item_j_videoUrl = item_j['videoUrl']
-            if (item_i == item_j_videoUrl):
-                new_Path = save_file_dir_path+'/'+'{}、'.format(i+1)+item_j_name+'.mp4'
-                #print(new_Path)
-                os.rename(old_Path, new_Path)
+        old_Path = file_dir_path+'/'+item_ideoUrl
+        #print(old_Path)
+        new_Path = save_file_dir_path+'/'+'{}、'.format(item_index)+item_name+'.mp4'
+        #print(new_Path)
+        os.rename(old_Path, new_Path)
 
     print('重命名 成功')
 
@@ -63,7 +61,7 @@ if __name__ == '__main__':
     print(file_dir_path)
     
     # 获取指定文件夹下所有文件名
-    files_list = get_file_names(file_dir_path)
+    #files_list = get_file_names(file_dir_path)
     #print(files_list)
     
     txt_file_name = "1、实务教材精讲"
@@ -79,12 +77,12 @@ if __name__ == '__main__':
     
     # 获取课程信息列表（字典数组）
     lesson_list_dict = get_lesson_name_list(file_path)
-    #print(lesson_list_dict)
+    print(lesson_list_dict)
     
     save_file_dir_path = dirt_path+'/'+txt_file_name
     # 判断目标是否存在
     if (os.path.exists(save_file_dir_path) == False):
         # 创建目录
         os.mkdir(save_file_dir_path)
-    rename_video_file(file_dir_path, save_file_dir_path, files_list, lesson_list_dict)
+    rename_video_file(file_dir_path, save_file_dir_path, lesson_list_dict)
     
