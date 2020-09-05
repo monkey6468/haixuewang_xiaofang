@@ -135,7 +135,7 @@ if __name__ == '__main__':
     csrf_token = 'KIMCIM'
     
     # 必须 *
-    cookie='__jsluid_h=6bf1eb16beb6abe31ebd64c264e63bb8; gr_user_id=cbf469e0-8b64-4865-bab4-7c909501708f; grwng_uid=c522ecc4-e18a-4b91-b7d1-1245d3c547e2; deviceType=NORMAL; pageNum=0; 88da63a710494189_gr_last_sent_cs1=28770711; haixue_playback_bj=1599235513178; H_U_C=28770711%2C18520156468_6598%40haixue.com%2C%E5%AD%A6%E5%91%9828770711; U_N_C=18520156468; pass_sec=8df95c2dcd4b492a8885890f4114a1a3.28770711.1599265124674.web.bd24c901af498381232d01107699a102; csrf_token=KIMCIM; security_refresh=8df95c2dcd4b492a8885890f4114a1a3.28770711.1599265124674.web.bd24c901af498381232d01107699a102; 88da63a710494189_gr_session_id=8ff7d65c-ae25-4429-afea-181a5e2e03b2; 88da63a710494189_gr_last_sent_sid_with_cs1=8ff7d65c-ae25-4429-afea-181a5e2e03b2; security_access=eyJhbGciOiJSUzUxMiJ9.eyJ1aWQiOjI4NzcwNzExLCJzdWIiOiJ3ZWIiLCJpc3MiOiJwYXNzcG9ydCIsImV4cCI6MTU5OTI3MDg0OCwiaWF0IjoxNTk5MjcwNTQ4LCJqdGkiOiJjYzQ5NzM2Ny0wNjE0LTQ4MmYtODhlZi0wOGY4Yzg3NGQyZTgifQ.O1E7qQmo-vUpB4yqDEnoIldHjCoui0uP4bYqqKmRI-_FA2Wc-S3SWxahQGW3IhpRTkQkFzymYGYnIMjSyLmANmR_1rqou5oMb_UmJLOfOW1rQdH5aAJjmaRisRps03UJjo3981pt5XvZo4k6VR15TGXdzZNLR-l99WWraFZ71cg; 88da63a710494189_gr_session_id_8ff7d65c-ae25-4429-afea-181a5e2e03b2=true; security=55bf8dbb-70c0-4ae0-be83-5f24ce698510.1599270548352.28770711.web.194fa5df85b99ec12c73f52f0d3f7286; 88da63a710494189_gr_cs1=28770711; JSESSIONID=F2505932B66F0C969E5C2FBC131C37AE'
+    cookie='__jsluid_h=6bf1eb16beb6abe31ebd64c264e63bb8; gr_user_id=cbf469e0-8b64-4865-bab4-7c909501708f; grwng_uid=c522ecc4-e18a-4b91-b7d1-1245d3c547e2; deviceType=NORMAL; pageNum=0; 88da63a710494189_gr_last_sent_cs1=28770711; haixue_playback_bj=1599235513178; H_U_C=28770711%2C18520156468_6598%40haixue.com%2C%E5%AD%A6%E5%91%9828770711; U_N_C=18520156468; pass_sec=8df95c2dcd4b492a8885890f4114a1a3.28770711.1599265124674.web.bd24c901af498381232d01107699a102; csrf_token=KIMCIM; security_refresh=8df95c2dcd4b492a8885890f4114a1a3.28770711.1599265124674.web.bd24c901af498381232d01107699a102; 88da63a710494189_gr_session_id=970eedde-5b31-4399-ac27-e22bc0751462; 88da63a710494189_gr_last_sent_sid_with_cs1=970eedde-5b31-4399-ac27-e22bc0751462; security=d0d93f53-a58e-4dd8-a2aa-56df30f92876.1599274564647.28770711.web.53654bf197e425221479becf8f212e3d; 88da63a710494189_gr_session_id_970eedde-5b31-4399-ac27-e22bc0751462=true; security_access=eyJhbGciOiJSUzUxMiJ9.eyJ1aWQiOjI4NzcwNzExLCJzdWIiOiJ3ZWIiLCJpc3MiOiJwYXNzcG9ydCIsImV4cCI6MTU5OTI3NTU3NCwiaWF0IjoxNTk5Mjc1Mjc0LCJqdGkiOiIyNmUxNjgwMi0zMGZlLTRkZGEtYWFiYy1jNThmNGM0MGM0MjIifQ.fWBRQFbqECet67sg2DDENYoNOZTniZv0BAwoVwnBbJkiwwOPxnjK7rkhGQL2cLhUvi3KaLOl9PETNUWLAf0yc9hnZ3MaE20OXGKa5GGI962id1BHhI5OsqAsgwu3znf5_cu0mKQOrXL3xp3nJRzhD8fpT6p9MxIuYbvNOdvhKEc; 88da63a710494189_gr_cs1=28770711; JSESSIONID=72C17CA7EED4367A7F57C72512A788B3'
     headers = get_headers(cookie)
     
     filename = ''
@@ -147,9 +147,14 @@ if __name__ == '__main__':
     elif int(input_type) == 2:
         filename = '2、综合教材精讲'
         goodsModuleId = 18387
-    else:
+    elif int(input_type) == 3:
         filename = '3、案例教材精讲'
         goodsModuleId = 18389
+    else:
+        filename = input_type
+        goodsModuleId = input_type
+    print(filename)
+    print(goodsModuleId)
     
     #print(filename)
     
