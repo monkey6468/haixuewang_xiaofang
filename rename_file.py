@@ -55,7 +55,7 @@ def rename_video_file(file_dir_path, save_file_dir_path, files_list, lesson_list
     print('重命名 成功')
 
 if __name__ == '__main__':
-    input_type = input('首先请保重csrf_token、cookie正确(根据调试具有这两个参数实时性)，请输入goodsModuleId：\n1-实务教材精讲\n2-综合教材精讲\n3-案例教材精讲\n：')
+    input_type = input('请输入类型：\n1-实务教材精讲\n2-综合教材精讲\n3-案例教材精讲\n：')
     
     video_file_name = 'videos'
     dirt_path = os.getcwd()
@@ -73,9 +73,9 @@ if __name__ == '__main__':
     elif int(input_type) == 2:
         txt_file_name = '2、综合教材精讲'
     else:
-        filename = '3、案例教材精讲'
+        txt_file_name = '3、案例教材精讲'
     file_path = dirt_path+'/'+'脚本数据'+'/'+txt_file_name+'.txt'
-    #print(file_path)
+    print(file_path)
     
     # 获取课程信息列表（字典数组）
     lesson_list_dict = get_lesson_name_list(file_path)
@@ -86,6 +86,5 @@ if __name__ == '__main__':
     if (os.path.exists(save_file_dir_path) == False):
         # 创建目录
         os.mkdir(save_file_dir_path)
-    
     rename_video_file(file_dir_path, save_file_dir_path, files_list, lesson_list_dict)
     
