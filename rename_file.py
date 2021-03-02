@@ -31,10 +31,13 @@ def get_lesson_name_list(file_path):
         lesson_dict['name'] = item_dict['name']
         
         videoUrl = item_dict['videoUrl']
+        lectureUrl = item_dict['lectureUrl']
         # 只分割最后一个
         videoUrl = videoUrl.rsplit("/",1)[1]
-        
+        lectureUrl = lectureUrl.rsplit("/",1)[1]
+
         lesson_dict['videoUrl'] = videoUrl
+        lesson_dict['lectureUrl'] = lectureUrl
         lesson_list_dict.append(lesson_dict)
     return lesson_list_dict
     
@@ -44,10 +47,17 @@ def rename_video_file(file_dir_path, save_file_dir_path, lesson_list_dict):
         item_name = item['name']
         item_ideoUrl = item['videoUrl']
         
+        #*****以下为视频部分*****#
         old_Path = file_dir_path+'/'+item_ideoUrl
         #print(old_Path)
         new_Path = save_file_dir_path+'/'+'{}、'.format(item_index)+item_name+'.mp4'
         #print(new_Path)
+        #*****以上为视频部分*****#
+#        #*****以下为PDF部分*****#
+#        item_lectureUrl = item['lectureUrl']
+#        old_Path = file_dir_path+'/'+item_lectureUrl
+#        new_Path = save_file_dir_path+'/'+'{}-'.format(item_index)+item_name+'.pdf'
+#        #*****以上为PDF部分*****#
         os.rename(old_Path, new_Path)
 
     print('重命名 成功')
